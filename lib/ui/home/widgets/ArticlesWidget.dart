@@ -6,12 +6,14 @@ import 'ArticleItem.dart';
 
 class ArticlesWidget extends StatelessWidget {
   Source source;
-  ArticlesWidget(this.source);
+  String? Function() getSearchKeyword; //
+  ArticlesWidget(this.source ,{required this.getSearchKeyword});
 
   @override
   Widget build(BuildContext context) {
+    String? q =getSearchKeyword();
     return FutureBuilder(
-        future: ApiManager.getArticles(source.id!),
+        future: ApiManager.getArticles(source.id!,q),
         builder: (context, snapshot) {
             if(snapshot.connectionState == ConnectionState.waiting){
               return Center(child: CircularProgressIndicator(),);

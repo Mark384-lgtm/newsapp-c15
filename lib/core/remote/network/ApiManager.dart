@@ -11,8 +11,7 @@ class ApiManager{
   );
 
   static Future<SourcesResponse?> getSources(String category)async{
-    // &category=sports
-
+    print("selected category is ${category}");
     try{
       var response = await dio.get("/v2/top-headlines/sources",queryParameters: {
         "apiKey":apiKey,
@@ -25,12 +24,15 @@ class ApiManager{
     }
   }
 
-  static Future<ArticlesResponse?> getArticles(String source)async{
+  static Future<ArticlesResponse?> getArticles(String source , String? q)async{
    try{
      //?apiKey=d3e16e322c2e4c00b4b4f4967c290a7f
+     if(q=='')q=null;
+     print ("passed q = ${q}");
      var response = await dio.get("/v2/everything",queryParameters: {
        "sources":source,
-       "apiKey":apiKey
+       "apiKey":apiKey,
+       "q":q
      });
      ArticlesResponse articlesResponse = ArticlesResponse.fromJson(response.data);
      return articlesResponse;

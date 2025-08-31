@@ -9,7 +9,8 @@ import 'package:news_c15/ui/home/widgets/ArticlesWidget.dart';
 
 class CategoryDetailsWidget extends StatelessWidget {
   CategoryModel categoryModel;
-  CategoryDetailsWidget(this.categoryModel);
+  CategoryDetailsWidget(this.categoryModel,{required this.getSearchKeyword});
+  String?Function() getSearchKeyword;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class CategoryDetailsWidget extends StatelessWidget {
                   SizedBox(height: 16.h,),
                   Expanded(
                     child: TabBarView(
-                      children: sources.map((source) => ArticlesWidget(source)).toList(),
+                      children: sources.map((source) => ArticlesWidget(source,getSearchKeyword: getSearchKeyword ,)).toList(),
                     ),
                   )
                 ],
