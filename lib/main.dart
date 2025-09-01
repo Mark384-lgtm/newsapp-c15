@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_c15/core/resources/AppStyle.dart';
 import 'package:news_c15/core/resources/RoutesManager.dart';
+import 'package:news_c15/ui/ViewFullArticle/Screen/ViewFullArticle.dart';
 import 'package:news_c15/ui/home/screen/home_screen.dart';
 
 void main() {
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: AppStyle.lightTheme,
           routes: {
-            RoutesManager.home:(_)=>HomeScreen()
+            RoutesManager.home:(_)=>HomeScreen(),
+            RoutesManager.ViewFullArticle:(_)=>ViewFullArticle(),
           },
           initialRoute:RoutesManager.home ,
         );
